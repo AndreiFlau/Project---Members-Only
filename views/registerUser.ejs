@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register User</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("../errors.ejs") %>
+    <form action="/register" method="post">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <label for="confirmpassword">Confirm your password:</label>
+      <input type="password" id="confirmpassword" name="confirmpassword" required />
+      <button type="submit">Submit</button>
+    </form>
+    <a href="/">Return to the homepage.</a>
+  </body>
+</html>

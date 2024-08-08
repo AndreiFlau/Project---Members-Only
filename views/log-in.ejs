@@ -3,22 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register User</title>
+    <title>Log User</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <%- include("errors.ejs") %>
-    <form action="/register" method="post">
-      <label for="firstName">First Name: </label>
-      <input type="text" name="firstName" id="firstName" required />
-      <label for="lastName">Last Name: </label>
-      <input type="text" name="lastName" id="lastName" required />
+    <%- include("flasherrors.ejs") %>
+    <form action="/log-in" method="post">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required />
-      <label for="confirmpassword">Confirm your password:</label>
-      <input type="password" id="confirmpassword" name="confirmpassword" required />
       <button type="submit">Submit</button>
     </form>
     <a href="/">Return to the homepage.</a>

@@ -8,17 +8,28 @@
   </head>
   <body>
     <h1>Message Club</h1>
+    <% if (user && user.membership === false) {%>
+    <h1>WELCOME BACK <%= user.first_name%> <%= user.last_name %></h1>
+    <a href="/log-out">LOG OUT</a>
+    <% }%> <% if (user && user.membership === true) {%>
+    <h1>WELCOME BACK SECRET CLUB MEMBER <%= user.first_name%> <%= user.last_name %></h1>
+    <a href="/log-out">LOG OUT</a>
+    <% }%>
     <ul class="messages">
       <div>
         <h1>Message Title</h1>
         <p>Message</p>
-        <p>Timestamp</p>
+        <p>Timestamp if member of the club</p>
         <p>can see Author if member</p>
       </div>
     </ul>
     <div class="links">
+      <% if (!user) {%>
       <a href="/register">Register</a>
       <a href="/log-in">Login</a>
+      <% }%> <% if (user && user.membership === false) {%>
+      <a href="/join-club">Join our club!</a>
+      <% }%>
     </div>
   </body>
 </html>

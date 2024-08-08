@@ -1,11 +1,11 @@
 const pool = require("./pool");
 
-async function registerUserQuery(firstName, lastName, email, password) {
+async function registerUserQuery(firstName, lastName, email, password, admin) {
   await pool.query(
     `
-    INSERT INTO users (first_name, last_name, email, password)
-    VALUES ($1,$2,$3,$4)`,
-    [firstName, lastName, email, password]
+    INSERT INTO users (first_name, last_name, email, password, admin)
+    VALUES ($1,$2,$3,$4, $5)`,
+    [firstName, lastName, email, password, admin]
   );
 }
 
@@ -42,7 +42,18 @@ async function getAllMessages() {
     message: message.message_content,
     timestamp: message.time,
     author: message.first_name + " " + message.last_name,
+    messageId: message.author_id,
   }));
+}
+
+async function deleteMessageQuery(id) {
+  await pool.query(
+    `
+    DELETE FROM messages
+    WHERE author_id = ($1)
+    `,
+    [id]
+  );
 }
 
 module.exports = {
@@ -50,4 +61,5 @@ module.exports = {
   joinClubQuery,
   createMessageQuery,
   getAllMessages,
+  deleteMessageQuery,
 };

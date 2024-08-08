@@ -8,7 +8,22 @@
   </head>
   <body>
     <h1>Message Club</h1>
-    <% if (user && user.membership === false) {%>
+    <% if (user && user.admin) {%>
+    <h1>WELCOME BACK ADMIN <%= user.first_name%> <%= user.last_name %></h1>
+    <ul class="messages">
+      <% if(messages) messages.forEach((message) => { %>
+      <div>
+        <h1><%= message.title %></h1>
+        <p><%= message.message %></p>
+        <p><%= message.timestamp %></p>
+        <p><%= message.author %></p>
+        <form action="/deletemessage/<%= message.messageId %>" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+      <%}) %>
+    </ul>
+    <%} %> <% if (user && user.membership === false && user.admin === false) {%>
     <h1>WELCOME BACK <%= user.first_name%> <%= user.last_name %></h1>
     <a href="/log-out">LOG OUT</a>
     <% }%> <% if (user && user.membership === true) {%>
@@ -24,7 +39,7 @@
       </div>
       <%}) %>
     </ul>
-    <% }%> <% if (!user || user && user.membership === false) {%>
+    <% }%> <% if (!user || user && user.membership === false && user.admin === false) {%>
     <ul class="messages">
       <% if(messages) messages.forEach((message) => { %>
       <div>
@@ -38,7 +53,7 @@
       <% if (!user) {%>
       <a href="/register">Register</a>
       <a href="/log-in">Login</a>
-      <% }%> <% if (user && user.membership === false) {%>
+      <% }%> <% if (user && user.membership === false && user.admin === false) {%>
       <a href="/join-club">Join our club!</a>
       <% }%> <% if (user) {%>
       <a href="/create-message">Leave a message!</a>

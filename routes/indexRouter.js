@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { deleteMessagePost } = require("../controllers/deleteMessageController");
 const indexRouter = Router();
 
 indexRouter.get("/", (req, res) => {
@@ -16,5 +17,7 @@ indexRouter.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
+
+indexRouter.post("/deletemessage/:id", deleteMessagePost);
 
 module.exports = indexRouter;

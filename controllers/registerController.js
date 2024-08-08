@@ -4,6 +4,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const { registerUserQuery } = require("../db/queries");
+require("dotenv").config();
 
 const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 1 and 10 characters.";
@@ -30,6 +31,14 @@ const validateUser = [
       return value === req.body.password;
     })
     .withMessage("Passwords don't match."),
+  body("admin")
+    .optional()
+    .custom((value, { req }) => {
+      if (value !== process.env.ADMINPASS) {
+        throw new Error("Wrong ADMIN password.");
+      }
+      return true;
+    }),
 ];
 
 exports.registerGet = asyncHandler(async (req, res) => {
@@ -52,7 +61,11 @@ exports.registerPost = [
         }
         // otherwise, store hashedPassword in DB
         const { firstName, lastName, email } = req.body;
-        await registerUserQuery(firstName, lastName, email, hashedPassword);
+        let admin = false;
+        if (req.body.admin === process.env.ADMINPASS) {
+          admin = true;
+        }
+        await registerUserQuery(firstName, lastName, email, hashedPassword, admin);
       });
       res.redirect("/");
     } catch (err) {

@@ -6,7 +6,6 @@ require("dotenv").config();
 const validatePass = [
   body("secretpass")
     .notEmpty()
-    .escape()
     .custom((value, { req }) => {
       if (value !== process.env.SECRETPASS) {
         throw new Error("Incorrect Password");

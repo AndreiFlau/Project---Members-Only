@@ -30,8 +30,24 @@ async function createMessageQuery(title, message, id) {
   );
 }
 
+async function getAllMessages() {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM messages
+    JOIN users ON author_id = users.id;
+    `
+  );
+  return rows.map((message) => ({
+    title: message.title,
+    message: message.message_content,
+    timestamp: message.time,
+    author: message.first_name + " " + message.last_name,
+  }));
+}
+
 module.exports = {
   registerUserQuery,
   joinClubQuery,
   createMessageQuery,
+  getAllMessages,
 };

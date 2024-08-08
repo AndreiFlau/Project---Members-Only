@@ -2,7 +2,10 @@ const { Router } = require("express");
 const indexRouter = Router();
 
 indexRouter.get("/", (req, res) => {
-  res.render("index", { user: req.user });
+  const messages = req.allMessages;
+  console.log(messages);
+
+  res.render("index", { user: req.user, messages: messages });
 });
 
 indexRouter.get("/log-out", (req, res, next) => {

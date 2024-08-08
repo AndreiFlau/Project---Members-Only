@@ -14,15 +14,26 @@
     <% }%> <% if (user && user.membership === true) {%>
     <h1>WELCOME BACK SECRET CLUB MEMBER <%= user.first_name%> <%= user.last_name %></h1>
     <a href="/log-out">LOG OUT</a>
-    <% }%>
     <ul class="messages">
+      <% if(messages) messages.forEach((message) => { %>
       <div>
-        <h1>Message Title</h1>
-        <p>Message</p>
-        <p>Timestamp if member of the club</p>
-        <p>can see Author if member</p>
+        <h1><%= message.title %></h1>
+        <p><%= message.message %></p>
+        <p><%= message.timestamp %></p>
+        <p><%= message.author %></p>
       </div>
+      <%}) %>
     </ul>
+    <% }%> <% if (!user || user && user.membership === false) {%>
+    <ul class="messages">
+      <% if(messages) messages.forEach((message) => { %>
+      <div>
+        <h1><%= message.title %></h1>
+        <p><%= message.message %></p>
+      </div>
+      <%}) %>
+    </ul>
+    <% }%>
     <div class="links">
       <% if (!user) {%>
       <a href="/register">Register</a>

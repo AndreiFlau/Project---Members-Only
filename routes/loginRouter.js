@@ -3,7 +3,7 @@ const passport = require("passport");
 const loginRouter = Router();
 
 loginRouter.get("/", (req, res) => {
-  res.render("log-in", { errors: req.flash("error") });
+  res.render("log-in", { user: req.user, errors: req.flash("error") });
 });
 
 loginRouter.post(

@@ -20,7 +20,18 @@ async function joinClubQuery(id) {
   );
 }
 
+async function createMessageQuery(title, message, id) {
+  await pool.query(
+    `
+    INSERT INTO messages(title, message_content, author_id)
+    VALUES ($1, $2, $3);
+    `,
+    [title, message, id]
+  );
+}
+
 module.exports = {
   registerUserQuery,
   joinClubQuery,
+  createMessageQuery,
 };

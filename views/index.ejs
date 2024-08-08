@@ -29,6 +29,8 @@
       <a href="/log-in">Login</a>
       <% }%> <% if (user && user.membership === false) {%>
       <a href="/join-club">Join our club!</a>
+      <% }%> <% if (user) {%>
+      <a href="/create-message">Leave a message!</a>
       <% }%>
     </div>
   </body>

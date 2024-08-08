@@ -6,6 +6,7 @@
     <title>Join Club</title>
   </head>
   <body>
+    <% if(user && user.membership === false) {%>
     <h1>Join the club now!</h1>
     <p>If you know the password that is...</p>
     <form action="/join-club" method="post">
@@ -13,5 +14,6 @@
       <input type="text" id="secretpass" name="secretpass" required />
       <button type="submit">Submit</button>
     </form>
+    <% } else { %> <%- include("./partials/notauserpartial.ejs") %> <%}%>
   </body>
 </html>

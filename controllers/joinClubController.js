@@ -16,7 +16,7 @@ const validatePass = [
 ];
 
 exports.joinClubGet = asyncHandler(async (req, res) => {
-  res.render("join-club");
+  res.render("join-club", { user: req.user });
 });
 
 exports.joinClubPost = [

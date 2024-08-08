@@ -9,6 +9,7 @@ const session = require("express-session");
 const auth = require("./middleware/auth");
 const loginRouter = require("./routes/loginRouter");
 const joinClubRouter = require("./routes/joinclubRouter");
+const createMessageRouter = require("./routes/createMessageRouter");
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/log-in", loginRouter);
 app.use("/join-club", joinClubRouter);
+app.use("/create-message", createMessageRouter);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`listening to port: ${PORT}`));

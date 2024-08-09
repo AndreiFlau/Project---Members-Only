@@ -8,7 +8,7 @@ const passport = require("passport");
 const session = require("express-session");
 const auth = require("./middleware/auth");
 const loginRouter = require("./routes/loginRouter");
-const joinClubRouter = require("./routes/joinclubRouter");
+const joinClubRouter = require("./routes/joinClubRouter");
 const createMessageRouter = require("./routes/createMessageRouter");
 const { getAllMessages } = require("./db/queries");
 require("dotenv").config();

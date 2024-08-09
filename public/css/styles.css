@@ -1,0 +1,70 @@
+@import './modern-normalize.css';
+
+body {
+  background: #eef2ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  margin-bottom: 5vh;
+  gap: 10px;
+}
+
+a {
+  color: #34345C;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #34345c;
+}
+
+a:hover {
+  color: red;
+}
+
+textarea {
+  width: 300px;
+  min-height: 100px;
+  max-height: 300px;
+  resize: vertical;
+  overflow-y: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button {
+  max-width: 6rem;
+}
+
+button:not(.message button) {
+  align-self: center;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 30px;
+}
+
+.message {
+  padding: 40px;
+  background-color: #d6daf0;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1 1 50px; */
+}
+
+.links {
+  gap: 30px;
+  display: flex;
+}

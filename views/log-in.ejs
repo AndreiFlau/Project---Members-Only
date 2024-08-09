@@ -8,6 +8,7 @@
   </head>
   <body>
     <% if (!user) {%> <%- include("flasherrors.ejs") %>
+    <h1>Log In</h1>
     <form action="/log-in" method="post">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
@@ -15,7 +16,7 @@
       <input type="password" id="password" name="password" required />
       <button type="submit">Submit</button>
     </form>
-    <a href="/">Return to the homepage.</a>
+    <a href="/">Return to the homepage</a>
     <% } else { %>
     <h1>You're already logged in.</h1>
     <a href="/">Return to the homepage</a>

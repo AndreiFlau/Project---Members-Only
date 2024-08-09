@@ -4,17 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Message</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <% if(user) {%> <%- include("errors.ejs") %>
-    <h1>Write something about your hobbies, what you enjoy, or any thoughts you may have! Have fun!</h1>
+    <h1>Leave a message!</h1>
     <form action="create-message" method="post">
       <label for="title">Title</label>
       <input type="text" name="title" id="title" required />
       <label for="userMessage">Your message:</label>
-      <textarea name="userMessage" id="userMessage" cols="30" rows="10" required></textarea>
+      <textarea name="userMessage" id="userMessage" rows="4" cols="50" maxlength="2500" required></textarea>
       <button type="submit">Submit</button>
     </form>
+    <a href="/">Return to the homepage</a>
     <% } else { %> <%- include("./partials/notauserpartial.ejs") %> <%}%>
   </body>
 </html>

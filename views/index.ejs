@@ -10,13 +10,14 @@
     <h1>Message Club</h1>
     <% if (user && user.admin) {%>
     <h1>WELCOME BACK ADMIN <%= user.first_name%> <%= user.last_name %></h1>
+    <a href="/log-out">LOG OUT</a>
     <ul class="messages">
       <% if(messages) messages.forEach((message) => { %>
-      <div>
+      <div class="message">
         <h1><%= message.title %></h1>
         <p><%= message.message %></p>
-        <p><%= message.timestamp %></p>
-        <p><%= message.author %></p>
+        <p>At: <%= message.timestamp %></p>
+        <p>By: <%= message.author %></p>
         <form action="/deletemessage/<%= message.messageId %>" method="post">
           <button type="submit">Delete</button>
         </form>
@@ -31,18 +32,18 @@
     <a href="/log-out">LOG OUT</a>
     <ul class="messages">
       <% if(messages) messages.forEach((message) => { %>
-      <div>
+      <div class="message">
         <h1><%= message.title %></h1>
         <p><%= message.message %></p>
-        <p><%= message.timestamp %></p>
-        <p><%= message.author %></p>
+        <p>At: <%= message.timestamp %></p>
+        <p>By: <%= message.author %></p>
       </div>
       <%}) %>
     </ul>
     <% }%> <% if (!user || user && user.membership === false && user.admin === false) {%>
     <ul class="messages">
       <% if(messages) messages.forEach((message) => { %>
-      <div>
+      <div class="message">
         <h1><%= message.title %></h1>
         <p><%= message.message %></p>
       </div>

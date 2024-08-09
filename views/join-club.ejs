@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Club</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <% if(user && user.membership === false) {%>
@@ -14,6 +15,7 @@
       <input type="text" id="secretpass" name="secretpass" required />
       <button type="submit">Submit</button>
     </form>
+    <a href="/">Return to the homepage</a>
     <% } else { %> <%- include("./partials/notauserpartial.ejs") %> <%}%>
   </body>
 </html>

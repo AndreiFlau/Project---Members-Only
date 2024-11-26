@@ -32,6 +32,9 @@ const validateUser = [
     })
     .withMessage("Passwords don't match."),
   body("admin")
+    .customSanitizer((value) => {
+      return value === "" ? undefined : value;
+    })
     .optional()
     .custom((value, { req }) => {
       if (value !== process.env.ADMINPASS) {
